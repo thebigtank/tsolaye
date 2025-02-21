@@ -1,0 +1,42 @@
+# Ignore node modules and dependencies
+/node_modules
+/build
+
+# Ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE and editor specific files
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# Ignore npm debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore environment variables file
+.env
+
+# Ignore Composer dependencies
+/vendor
+
+# Ignore sass cache
+.sass-cache
+
+# Ignore temporary files created during development
+*.tmp
+*.swp
+*.swo
+*.bak
+*.ori
+
+# Ignore NPM package lock file
+package-lock.json

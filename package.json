@@ -1,0 +1,20 @@
+{
+	"name": "wp-block-theme-starter",
+	"version": "1.0.0",
+	"description": "A WordPress build process for modern block theme development.",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build"
+	},
+	"type": "module",
+	"dependencies": {
+		"@glidejs/glide": "^3.6.0",
+		"hamburgers": "^1.2.1",
+		"sass": "^1.77.6",
+		"vite": "^5.3.2"
+	},
+	"devDependencies": {
+		"dotenv": "^16.4.5"
+	}
+}

@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.smooth-scroll {
+	scroll-behavior: smooth;
+}
+
+.visually-hidden,
+.visually-hide-label,
+.visually-hide-text,
+.screen-reader-text {
+	@include visually-hidden();
+}
+
+.page {
+	main {
+		>.wp-block-group {
+			@include visually-hidden();
+		}
+	}
+}
