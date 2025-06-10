@@ -86,121 +86,6 @@ class theme {
     }
 
     /**
-     * Registers custom block types using Advanced Custom Fields (ACF).
-     *
-     * This function checks if the ACF function `acf_register_block_type` exists and, if it does,
-     * registers custom block types. The custom block types should be defined in the specified
-     * directories and files. Currently, this example includes a placeholder for an accordion block.
-     *
-     * Example usage:
-     * - Define the block types in their respective files within the '/blocks' directory of your theme.
-     * - Uncomment the registration line and adjust the path as needed for each block type.
-     *
-     * @author BigTank
-     * @return void
-     */
-    static function block_types() {
-        // Check if the ACF function exists.
-        if (function_exists('acf_register_block_type')) {
-            // Example block registration.
-            // register_block_type(get_template_directory() . '/blocks/accordions');
-        }
-    }
-
-    /**
-     * Adds a custom block category for use in the block editor.
-     *
-     * This function checks if the current editor context is for a post and, if so, adds a custom
-     * block category named 'Custom Blocks' to the beginning of the existing block categories array.
-     * This allows custom blocks to be grouped under a specific category in the block editor.
-     *
-     * @param array $block_categories Array of existing block categories.
-     * @param object $editor_context The current editor context, including the post being edited.
-     *
-     * @author BigTank
-     * @return array Modified array of block categories with the custom category added.
-     */
-    static function block_categories($block_categories, $editor_context) {
-        if (!empty($editor_context->post)) {
-            array_unshift(
-                $block_categories,
-                array(
-                    'slug'  => 'custom-blocks',
-                    'title' => __('Custom Blocks'),
-                    'icon'  => null,
-                )
-            );
-        }
-        return $block_categories;
-    }
-
-    /**
-     * Sets the save path for ACF JSON files.
-     *
-     * This function updates the save path for Advanced Custom Fields (ACF) JSON files.
-     * It sets the path to a specific directory within the theme. This allows ACF field groups
-     * to be saved as JSON files for version control and easier migrations.
-     *
-     * @param string $path The current save path for ACF JSON files.
-     *
-     * @author BigTank
-     * @return string Updated save path for ACF JSON files.
-     */
-    static function json_save_folder($path) {
-        // Update path.
-        $path = get_stylesheet_directory() . '/inc/acf/json/';
-
-        // Return updated path.
-        return $path;
-    }
-
-    /**
-     * Sets the load path for ACF JSON files.
-     *
-     * This function updates the load path for Advanced Custom Fields (ACF) JSON files.
-     * It removes the original path and sets the path to a specific directory within the theme.
-     * This allows ACF to load field groups from the specified directory.
-     *
-     * @param array $paths Array of current load paths for ACF JSON files.
-     *
-     * @author BigTank
-     * @return array Updated array of load paths for ACF JSON files.
-     */
-    static function json_load_folder($paths) {
-        // Remove original path (optional).
-        unset($paths[0]);
-
-        // Append new path.
-        $paths[] = get_stylesheet_directory() . '/inc/acf/json/';
-
-        // Return updated paths.
-        return $paths;
-    }
-
-
-    /**
-     * Adds an ACF options page to the WordPress admin.
-     *
-     * This function checks if the ACF function `acf_add_options_page` exists and, if it does,
-     * adds a custom options page to the WordPress admin. The options page allows administrators
-     * to set site-wide options that can be managed from a central location within the admin.
-     *
-     * @author BigTank
-     * @return void
-     */
-    static function add_option_page() {
-        if (function_exists('acf_add_options_page')) {
-            acf_add_options_page(array(
-                'page_title'    => 'Site Options',
-                'menu_title'    => 'Site Options',
-                'menu_slug'     => 'acf-site-options',
-                'capability'    => 'edit_posts',
-                'redirect'      => false,
-            ));
-        }
-    }
-
-    /**
      * Sets the JPEG image quality to the highest level.
      *
      * This function returns a value of 100 to set the JPEG image quality to the maximum level.
@@ -277,12 +162,12 @@ class theme {
 
             if (file_exists($css_file)) {
                 $css_version = filemtime($css_file);
-                wp_enqueue_style('your-theme-style', DIST_URI . '/index.css', [], $css_version);
+                wp_enqueue_style('tsolaye-style', DIST_URI . '/index.css', [], $css_version);
             }
 
             if (file_exists($js_file)) {
                 $js_version = filemtime($js_file);
-                wp_enqueue_script('your-theme-script', DIST_URI . '/index.js', $dependencies, $js_version, true);
+                wp_enqueue_script('tsolaye-script', DIST_URI . '/index.js', $dependencies, $js_version, true);
             }
         }
 
@@ -295,14 +180,6 @@ class theme {
             null,
             'all'
         );
-    }
-
-    static function block_support() {
-        // Add support for block styles.
-        add_theme_support('wp-block-styles');
-
-        // Add support for custom spacing.
-        add_theme_support('custom-spacing');
     }
 
     /**

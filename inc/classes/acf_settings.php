@@ -17,8 +17,7 @@ class acf_settings {
      */
     static function block_types() {
         if (function_exists('acf_register_block_type')) {
-            register_block_type(get_template_directory() . '/blocks/hamburger');
-            register_block_type(get_template_directory() . '/blocks/hamburger_close');
+            // register_block_type(get_template_directory() . '/blocks/hamburger');
         }
     }
 
