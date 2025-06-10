@@ -5,7 +5,7 @@ This theme is a modern, block-based theme utilizing the latest WordPress theming
 ## Features
 
 - Block-Based: Built entirely using WordPress blocks, providing a seamless and flexible editing experience.
-- Modern Tooling: Utilizes `@wordpress/scripts` packages to handle the compilation of theme assets.
+- Modern Tooling: Utilizes `vite` to handle the compilation of theme assets and live reload.
 - Development Workflow: Easy to set up and start developing with `yarn`, allowing for efficient asset management and compilation.
 
 ## Requirements
