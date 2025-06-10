@@ -1,6 +1,6 @@
-# WordPress Block Theme Starter
+# WordPress FSE Block Theme
 
-Welcome to the WordPress Block Theme Starter! This theme is a modern, block-based theme utilizing the latest WordPress theming standards. Below, you'll find detailed instructions on how to set up and work with this theme.
+This theme is a modern, block-based theme utilizing the latest WordPress theming standards. Below, you'll find detailed instructions on how to set up and work with this theme.
 
 ## Features
 
