@@ -24,7 +24,7 @@ Welcome to the WordPress Block Theme Starter! This theme is a modern, block-base
 2. Navigate to the theme directory:
 
    ```
-   cd /wp-content/themes/wp-block-theme-starter
+   cd /wp-content/themes/tsolaye
    ```
 
 3. Install project dependencies:
@@ -32,14 +32,6 @@ Welcome to the WordPress Block Theme Starter! This theme is a modern, block-base
    ```
    yarn
    ```
-
-## Development
-
-You will need to create a `.env` file in the root directory of your theme. Inside this `.env` file, you should include the variable `WP_LOCAL_URL`. The value of `WP_LOCAL_URL` should match the local URL of your local WordPress site. This is necessary for local development.
-
-```
-WP_LOCAL_URL=http://example.local
-```
 
 ### Start the Development Server
 
@@ -50,16 +42,6 @@ yarn dev
 ```
 
 This command will compile the theme assets and watch for any changes, re-compiling as necessary. It also sets up a development server with hot module replacement for a seamless development experience.
-
-### Alternative Development Command
-
-You can also use:
-
-```
-yarn start
-```
-
-This command functions similarly to `yarn dev`, compiling the theme assets and watching for changes, re-compiling as necessary.
 
 ### Compile for Production
 
@@ -84,7 +66,3 @@ This command will create optimized, minified assets suitable for a live environm
    - Activate the theme from the WordPress admin dashboard.
 2. Customize the Theme:
    - Use the WordPress Block Editor to create and customize your pages and posts with ease.
-
-## Support
-
-Reference the official WordPress theme handbook chapter [Build Process](https://developer.wordpress.org/themes/advanced-topics/build-process/) for more details on the build process.
