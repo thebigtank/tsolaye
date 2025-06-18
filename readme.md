@@ -1,6 +1,6 @@
-# WordPress FSE Block Theme
+# Tsolaye WordPress FSE Block Theme
 
-This theme is a modern, block-based theme utilizing the latest WordPress theming standards. Below, you'll find detailed instructions on how to set up and work with this theme.
+Tsolaye is a modern, block-based theme utilizing the latest WordPress theming standards. Below, you'll find detailed instructions on how to set up and work with this theme.
 
 ## Features
 
