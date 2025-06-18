@@ -1,7 +1,9 @@
 import mainMenu from './components/main-menu';
-import styles from './components/styles';
+import blockStyles from './wp/block-styles';
+import blockVariations from './wp/block-variations';
 
 wp.domReady(function () {
 	mainMenu();
-	styles();
+	blockStyles();
+	blockVariations();
 });

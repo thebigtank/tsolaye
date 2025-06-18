@@ -171,11 +171,17 @@ class theme {
             }
         }
 
-
         // Enqueue the actual Google Fonts stylesheet
         wp_enqueue_style(
             'google-fonts',
             'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',  // Google Fonts URL
+            array(),  // Ensure preconnect styles are loaded first
+            null,
+            'all'
+        );
+        wp_enqueue_script(
+            'fontawesome-icons',
+            'https://kit.fontawesome.com/0c19da0f18.js',  // Google Fonts URL
             array(),  // Ensure preconnect styles are loaded first
             null,
             'all'
