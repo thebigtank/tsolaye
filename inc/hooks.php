@@ -1,17 +1,17 @@
 <?php
 
+require_once get_theme_file_path('inc/classes/assets.php');
+\Tsolaye\Assets::init();
+
+
 remove_theme_support('core-block-patterns');
 
 //======================================================================
 // WORDPRESS ACTIONS
 //======================================================================
-add_action('enqueue_block_assets', 'theme::resources');
-// add_action('enqueue_block_editor_assets', 'theme::resources');
 add_action('after_setup_theme', 'theme::block_styles');
 add_action('after_setup_theme', 'theme::supports');
-// add_action('after_setup_theme', 'theme::register_nav_menus', 0);
 add_action('init', 'theme::block_styles');
-add_action('init', 'theme::block_stylesheets');
 add_action('init', 'theme::pattern_categories');
 
 //======================================================================

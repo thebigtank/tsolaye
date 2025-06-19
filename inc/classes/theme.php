@@ -29,37 +29,6 @@ class theme {
     }
 
     /**
-     * Enqueues stylesheets for specific blocks in the theme.
-     *
-     * This function uses `wp_enqueue_block_style()` to enqueue a stylesheet for a specific block.
-     * The stylesheets will only get loaded when the block is rendered, both in the editor and
-     * on the front end, which improves performance and reduces the amount of data requested
-     * by visitors.
-     *
-     * @return void
-     * @author BigTank
-     */
-    static function block_stylesheets() {
-        /**
-         * The wp_enqueue_block_style() function allows us to enqueue a stylesheet
-         * for a specific block. These will only get loaded when the block is rendered
-         * (both in the editor and on the front end), improving performance
-         * and reducing the amount of data requested by visitors.
-         *
-         * See https://make.wordpress.org/core/2021/12/15/using-multiple-stylesheets-per-block/ for more info.
-         */
-        // wp_enqueue_block_style(
-        //     'core/button',
-        //     array(
-        //         'handle' => 'tank-button-style-secondary',
-        //         'src'    => get_parent_theme_file_uri('assets/css/button-outline.css'),
-        //         'ver'    => wp_get_theme(get_template())->get('Version'),
-        //         'path'   => get_parent_theme_file_path('assets/css/button-outline.css'),
-        //     )
-        // );
-    }
-
-    /**
      * Registers custom block pattern categories for the theme.
      *
      * This function registers a block pattern category named 'tank_page'.
@@ -102,90 +71,6 @@ class theme {
             return str_replace(' src', ' type="module" src', $tag);
         }
         return $tag;
-    }
-
-    /**
-     * Enqueues theme styles and scripts.
-     *
-     * This function loads the main stylesheet and JavaScript file for the theme.
-     * It uses the asset file generated during the build process to ensure that
-     * dependencies and versions are correctly managed. This helps in loading
-     * the required CSS and JavaScript files with their dependencies.
-     *
-     * @return void
-     * @author BigTank
-     */
-    static function resources() {
-        // Define the dependencies array
-        $dependencies = ['wp-blocks', 'wp-element', 'wp-i18n', 'wp-api-fetch'];
-
-        if (!defined('DIST_DIR')) {
-            define('DIST_DIR', get_template_directory() . '/dist');
-        }
-        if (!defined('DIST_URI')) {
-            define('DIST_URI', get_template_directory_uri() . '/dist');
-        }
-        if (!defined('VITE_DEV_SERVER')) {
-            define('VITE_DEV_SERVER', 'http://localhost:3000');
-        }
-
-        if (!function_exists('is_vite_dev_server_running')) {
-            function is_vite_dev_server_running() {
-                $curl = curl_init(VITE_DEV_SERVER);
-                curl_setopt($curl, CURLOPT_NOBODY, true);
-                curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-                curl_exec($curl);
-                $is_running = !curl_errno($curl);
-                curl_close($curl);
-                return $is_running;
-            }
-        }
-
-        if (is_vite_dev_server_running()) {
-            // Enqueue the Vite client script
-            wp_enqueue_script('vite-client', VITE_DEV_SERVER . '/@vite/client', [], null, true);
-
-            // Enqueue the main entry script with dependencies
-            wp_enqueue_script('vite-main', VITE_DEV_SERVER . '/index.js', $dependencies, null, true);
-
-            // Add type="module" to the Vite scripts
-            add_filter('script_loader_tag', function ($tag, $handle) {
-                if (in_array($handle, ['vite-client', 'vite-main'])) {
-                    return str_replace(' src', ' type="module" src', $tag);
-                }
-                return $tag;
-            }, 10, 2);
-        } else {
-            // In production, load the compiled assets
-            $css_file = DIST_DIR . '/index.css';
-            $js_file = DIST_DIR . '/index.js';
-
-            if (file_exists($css_file)) {
-                $css_version = filemtime($css_file);
-                wp_enqueue_style('tsolaye-style', DIST_URI . '/index.css', [], $css_version);
-            }
-
-            if (file_exists($js_file)) {
-                $js_version = filemtime($js_file);
-                wp_enqueue_script('tsolaye-script', DIST_URI . '/index.js', $dependencies, $js_version, true);
-            }
-        }
-
-        // Enqueue the actual Google Fonts stylesheet
-        wp_enqueue_style(
-            'google-fonts',
-            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',  // Google Fonts URL
-            array(),  // Ensure preconnect styles are loaded first
-            null,
-            'all'
-        );
-        wp_enqueue_script(
-            'fontawesome-icons',
-            'https://kit.fontawesome.com/0c19da0f18.js',  // Google Fonts URL
-            array(),  // Ensure preconnect styles are loaded first
-            null,
-            'all'
-        );
     }
 
     /**

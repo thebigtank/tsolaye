@@ -14,6 +14,7 @@ Thumbs.db
 # Ignore IDE and editor specific files
 .idea
 .vscode
+.claude
 *.sublime-project
 *.sublime-workspace
 
@@ -40,3 +41,4 @@ yarn-error.log*
 
 # Ignore NPM package lock file
 package-lock.json
+yarn.lock
