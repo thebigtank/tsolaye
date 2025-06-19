@@ -61,6 +61,13 @@ class Assets {
     }
 
     // Always enqueue fonts & icons
+    self::enqueueFonts();
+  }
+
+  /**
+   * Enqueue fonts and icons
+   */
+  private static function enqueueFonts(): void {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
     wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/0c19da0f18.js');
   }
@@ -69,6 +76,9 @@ class Assets {
    * Enqueue block CSS in both editor and front-end
    */
   public static function enqueueBlockStyles(): void {
+    // Always enqueue fonts for block editor
+    self::enqueueFonts();
+
     if (self::isDevServerRunning()) {
       // In dev mode, enqueue HMR client and CSS from dev server
       wp_enqueue_script('vite-client-blocks', self::$devUrl . '/@vite/client', [], null, true);
@@ -165,12 +175,12 @@ class Assets {
     if (in_array($handle, ['vite-client', 'vite-main', 'vite-client-blocks', 'vite-main-blocks'], true)) {
       return str_replace(' src', ' type="module" src', $tag);
     }
-    
+
     // Production mode scripts
     if (strpos($handle, 'theme-') === 0) {
       return str_replace(' src', ' type="module" src', $tag);
     }
-    
+
     return $tag;
   }
 
