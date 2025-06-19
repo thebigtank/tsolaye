@@ -1,5 +1,5 @@
 {
-	"name": "wp-block-theme-starter",
+	"name": "tsolaye-wordpress-block-theme",
 	"version": "1.0.0",
 	"description": "A WordPress build process for modern block theme development.",
 	"license": "GPL-2.0-or-later",
