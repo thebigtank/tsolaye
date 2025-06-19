@@ -1,3 +1,5 @@
+@use 'mixins';
+
 *,
 *::before,
 *::after {
@@ -16,13 +18,13 @@ body {
 .visually-hide-label,
 .visually-hide-text,
 .screen-reader-text {
-	@include visually-hidden();
+	@include mixins.visually-hidden();
 }
 
 .page {
 	main {
 		>.wp-block-group {
-			@include visually-hidden();
+			@include mixins.visually-hidden();
 		}
 	}
 }

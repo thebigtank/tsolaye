@@ -21,6 +21,13 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production'
     ? '/wp-content/themes/tsolaye/dist/'    // ← include “dist/” here
     : '/',
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
+    }
+  },
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
@@ -37,6 +44,8 @@ export default defineConfig({
 	server: {
 		port: 3000,
 		hot: true,
+		cors: true,
+		origin: 'http://localhost:3000',
 		proxy: {
 			// Proxy any request under your theme folder back to WP
 			'^/wp-content/themes/tsolaye/.*': {
